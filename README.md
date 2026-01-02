@@ -357,3 +357,11 @@ Watch Delete Protector in action:
 ![Delete Protector Demo](Images/D.gif)
 
 ---
+
+**📺 [Watch Full Feature Walkthrough (2:45)](https://m.youtube.com/watch?v=9mtxVpCiEtw)** - Complete demonstration including:
+- Keyboard shortcuts (Delete & Shift+Delete)
+- Context menu protection
+- Explorer & Directory Opus integration
+- Recycle Bin operations
+- Settings configuration
+- And more!
