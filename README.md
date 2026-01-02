@@ -304,3 +304,56 @@ If you find Delete Protector useful, please give it a star on GitHub! ⭐
 ---
 
 **🛡️ Stay Protected. Stay Secure. Delete with Confidence. 🛡️**
+
+---
+
+## 📸 Screenshots & Demo
+
+### 🎯 **Requirement: Activate Delete Confirmation**
+
+Before using Delete Protector, make sure to enable "Display delete confirmation dialog" in Windows File Explorer settings:
+
+![Activate Delete Confirmation](Images/A.png)
+
+---
+
+### ⚙️ **Settings Interface**
+
+#### Main Settings Panel
+![Settings Panel Overview](Images/A1.png)
+
+#### Password Configuration
+![Password Settings](Images/A2.png)
+
+#### Grace Period Configuration
+![Grace Period Settings](Images/A3.png)
+
+---
+
+### 🔐 **Password Prompt Examples**
+
+#### Keyboard Delete Protection (Delete/Shift+Delete)
+![Keyboard Password Prompt](Images/A4.png)
+
+#### Context Menu Delete Protection (Right-Click Delete)
+![Context Menu Password Prompt](Images/A5.png)
+
+---
+
+### ⏸️ **Protection Status Notifications**
+
+#### Protection Paused
+![Protection Paused Notification](Images/A6.png)
+
+#### Protection Resumed
+![Protection Resumed Notification](Images/A7.png)
+
+---
+
+### 🎬 **Live Demo**
+
+Watch Delete Protector in action:
+
+![Delete Protector Demo](Images/D.gif)
+
+---
