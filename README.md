@@ -315,13 +315,8 @@ Before using Delete Protector, make sure to enable "Display delete confirmation 
 ### ⚙️ **Settings Interface**
 
 #### Main Settings Panel
-![Settings Panel Overview](Images/A1.png)
+![Settings Panel Overview](Images/A8.png)
 
-#### Password Configuration
-![Password Settings](Images/A2.png)
-
-#### Grace Period Configuration
-![Grace Period Settings](Images/A3.png)
 
 ---
 
