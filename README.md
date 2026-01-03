@@ -5,148 +5,143 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1-red.svg)
 
-## 📋 Description
 
-**Delete Protector** is a powerful AutoHotkey script that adds an extra layer of security to your file deletion operations on Windows. It intercepts all delete attempts—whether from keyboard shortcuts or context menu operations—and requires password authentication before allowing any files to be permanently deleted or moved to the Recycle Bin. Perfect for preventing accidental deletions, protecting important files from unauthorized removal, or adding an extra security measure to your system.
+# Delete Protector - Definitive Edition v5.5
 
----
+## 🎯 Overview
+A powerful AutoHotkey script that protects your files from accidental deletion by requiring password authentication before any delete operation. Features a sleek dark-themed interface, configurable grace periods, and smart window exclusion system.
 
-## ✨ Key Features
+## ✨ What's New in Definitive Edition v5.5
 
-### 🔐 **Password-Protected Deletion**
-- **Master Password System**: All delete operations require password authentication before execution
-- **Default Password**: `admin123` (customizable in settings)
-- **Secure Authentication**: Password is masked during entry and stored in a local configuration file
-- **Custom Password Changes**: Change your password anytime through the settings interface with old password verification
+### 🔧 Major Bug Fixes
+- **Fixed Keyboard Protection Grace Period** - Resolved critical issue where keyboard shortcuts (Delete/Shift+Delete) would bypass password protection during grace period
+- **Separate But Unified Grace Periods** - Both keyboard and context menu grace periods now use the same sensible 2-7 second range (previously keyboard had illogical 15-25 second range)
+- **Dark Theme Improvements** - Enhanced visual consistency across all UI elements
 
-### ⌨️ **Keyboard Shortcut Protection**
-- **Delete Key Interception**: Pressing `Delete` triggers a password prompt before moving files to Recycle Bin
-- **Shift+Delete Interception**: Pressing `Shift+Delete` requires password authentication before permanent deletion
-- **Smart Grace Period**: After successful authentication, keyboard shortcuts work normally for a configurable period (10-25 seconds)
-- **Prevents Accidental Deletions**: No more accidental file removals from keyboard mishaps
+### 🚀 Key Features
 
-### 🖱️ **Context Menu Protection**
-- **Right-Click Delete Monitoring**: Automatically detects Windows delete confirmation dialogs triggered by right-click menu
-- **Dialog Freezing Technology**: Freezes the native Windows delete dialog until password is verified
-- **Multi-Language Support**: Detects delete dialogs in English and French (expandable to other languages)
-- **Seamless Integration**: Works with all Windows delete confirmation dialogs including:
-  - Single file deletion
-  - Folder deletion
-  - Multiple items deletion
-  - Permanent deletion confirmations
+#### Password Protection System
+- Intercepts **ALL** delete operations:
+  - `Delete` key
+  - `Shift+Delete` (permanent delete)
+  - Right-click context menu delete
+  - Automatic detection of Windows delete confirmation dialogs
+- Default password: `admin123` (changeable in settings)
+- Dark-themed password prompt for better UX
 
-### ⏱️ **Dual Grace Period System**
-Delete Protector features two independent grace period mechanisms for optimal user experience:
+#### Smart Grace Period System
+**How it works:**
+- After successful password entry, a temporary grace period prevents annoying double-prompts
+- **Keyboard Grace Period** (2-7s): Only disables *dialog detection* - keyboard shortcuts STILL require password
+- **Context Menu Grace Period** (2-7s): Allows the Windows delete dialog to proceed without re-prompting
+- **Recommended: 2-3 seconds** (default: 3s) - Fast enough to be unnoticeable during normal workflow
 
-#### **Keyboard Grace Period (10-25 seconds)**
-- Applies to `Delete` and `Shift+Delete` keyboard shortcuts
-- After successful password entry, keyboard delete operations work freely for the selected duration
-- Configurable options: 10, 15, 20, or 25 seconds
-- Default: 25 seconds
-- **Use Case**: Ideal for batch deletions using keyboard shortcuts
+**Why separate timers?**
+- Flexibility: Customize each deletion method independently
+- Consistency: Both now use the same 2-7 second range
+- Security: Short periods prevent abuse while maintaining protection
 
-#### **Context Menu Grace Period (2-7 seconds)** ⚡ **RECOMMENDED: 2-3 seconds**
-- Applies to right-click context menu delete operations
-- After password authentication, the native Windows delete dialog appears for quick confirmation
-- Configurable options: 2, 3, 4, 5, 6, or 7 seconds
-- Default: 3 seconds
-- **⭐ RECOMMENDATION**: Set to **2 or 3 seconds** for optimal security
-  - This brief window gives you just enough time to confirm or cancel the native Windows dialog
-  - **Real-time protection**: Re-enables protection almost immediately after you interact with the dialog
-  - Prevents the "tricky context menu vulnerability" where protection could be bypassed during longer grace periods
-  - Provides the perfect balance between usability and security
+#### Window Exclusion List
+Exclude specific applications from delete protection - perfect for file managers with built-in protections.
 
-### ⏸️ **Pause/Resume Protection**
-- **Toggle Protection**: Instantly enable or disable protection without closing the script
-- **Visual Feedback**: System tray icon changes to indicate paused state
-- **Tray Notifications**: Desktop notifications confirm pause/resume actions
-- **Emergency Override**: Useful when you need to perform multiple deletions quickly
-- **Hotkey**: Press `Alt+P` to pause/resume protection anytime
+**How it works:**
+- Add keywords separated by `|` symbol (e.g., `Stack|Opus|DOpus`)
+- Case-insensitive matching
+- Checks window titles before triggering protection
 
-### 🎨 **Dark Theme Interface**
-- **Modern UI Design**: All dialogs feature a sleek dark theme with proper contrast
-- **Password Prompt**: Clean, minimal design with masked password input
-- **Settings Panel**: Organized, easy-to-navigate configuration interface
-- **Windows API Integration**: Uses native Windows dark mode theming for buttons and controls
+**⚠️ IMPORTANT - Directory Opus Users:**
+- Adding `Opus` or `DOpus` to exclusion list will **disable context menu delete protection** in Directory Opus
+- This is intentional - Directory Opus has its own confirmation system
+- Keyboard shortcuts (Delete/Shift+Delete) will still be protected
+- Test your preferred workflow before relying on it
 
-### ⚙️ **Comprehensive Settings Panel**
-- **Password Management**: Change your master password with verification
-- **Grace Period Configuration**: Adjust both keyboard and context menu grace periods independently
-- **Persistent Settings**: All configurations saved to `DeleteProtector.ini` file
-- **Visual Feedback**: Clear confirmation messages after saving settings
+**Default exclusions:** `Stack|Opus|DOpus`
 
-### 🔔 **System Tray Integration**
-- **Always Accessible**: Lives in your system tray for quick access
-- **Custom Tray Menu**: Right-click for Settings, Pause/Resume, and Exit options
-- **Status Indicators**: Tray icon changes based on protection state (Active/Paused)
-- **Tooltip Status**: Hover over icon to see current protection status
-- **Optional Stealth Mode**: Can be hidden for enhanced security (see Advanced Setup)
+#### Pause/Resume Feature
+- **Alt+P**: Toggle protection on/off
+- System tray icon changes to indicate status:
+  - 🛡️ Shield icon = Active protection
+  - ⚠️ Warning icon = Paused (files can be deleted without password)
+- Useful for bulk delete operations or temporary file management
 
-### ⌨️ **Global Hotkeys**
-Three convenient keyboard shortcuts for instant access:
-- **`Alt+P`**: Pause/Resume protection
-- **`Alt+S`**: Open Settings panel
-- **`Alt+X`**: Exit the script
+#### Multi-Language Support
+Automatically detects and protects delete dialogs in:
+- English: "Delete File", "Delete Folder", "Delete Multiple Items", "Confirm File Delete"
+- French: "Supprimer le fichier", "Supprimer le dossier", "Supprimer plusieurs éléments"
+- Fallback detection for other language variants containing "Delete", "Confirm", "Supprimer", or "Confirmer"
 
----
+## 📋 Installation
 
-## 🚀 How to Use
+1. Download `Delete_Protector_Definitive_Edition.ahk`
+2. Install [AutoHotkey v1.1](https://www.autohotkey.com/) if not already installed
+3. Double-click the script to run
+4. Optional: Compile to `.exe` or add to Windows startup
 
-### **Initial Setup**
+## ⚙️ Configuration
 
-1. **Install AutoHotkey**
-   - Download and install AutoHotkey v1.1 from [autohotkey.com](https://www.autohotkey.com/)
-   - Required for running `.ahk` scripts
+### Settings Panel (Alt+S)
 
-2. **Download the Script**
-   - Download `My_Delete_Protector_5.1_Stable_Release.ahk` from this repository
-   - Place it in a permanent location on your computer (e.g., `C:\Programs\DeleteProtector\`)
+**Password Settings:**
+- Change password (requires current password verification)
+- All password fields must be filled to update
 
-3. **First Run**
-   - Double-click the `.ahk` file to run it
-   - A configuration file (`DeleteProtector.ini`) will be created in the same directory
-   - The script is now active and protecting your system
-   - Default password: `admin123`
+**Window Exclusion List:**
+- Add application keywords to exclude from protection
+- Separate multiple keywords with `|` (e.g., `Stack|Opus|MyApp|Firefox`)
+- Example use cases:
+  - File managers with built-in delete confirmations
+  - Development tools with safe delete features
+  - Applications you fully trust
 
-4. **Auto-Start on Windows Startup**
-   - Press `Win+R` and type: `shell:startup` and press Enter
-   - Create a shortcut to the `.ahk` file in this folder
-   - The script will now start automatically when Windows boots
+**Grace Period Settings:**
+- **Keyboard Grace Period**: 2-7 seconds (default: 3s)
+  - Recommended: 2-3 seconds for seamless experience
+  - Prevents dialog re-detection after keyboard delete
+  - Note: Keyboard shortcuts still require password during grace period
+  
+- **Context Menu Grace Period**: 2-7 seconds (default: 3s)
+  - Recommended: 2-3 seconds
+  - Allows Windows delete dialog to proceed after password entry
+  - Prevents annoying double-prompts
 
-### **Basic Operation**
+### Keyboard Shortcuts
+- **Alt+P**: Pause/Resume protection
+- **Alt+S**: Open settings
+- **Alt+X**: Exit script
+- **Delete**: Triggers password prompt (unless paused/excluded)
+- **Shift+Delete**: Triggers password prompt (unless paused/excluded)
 
-#### **Deleting Files (With Protection Active)**
-1. Select file(s) you want to delete
-2. Press `Delete` key OR right-click and select "Delete"
-3. Enter your password in the prompt
-4. Click "OK" to proceed with deletion or "Cancel" to abort
+## 🔒 Security Features
 
-#### **Permanent Deletion**
-1. Select file(s) you want to permanently delete
-2. Press `Shift+Delete`
-3. Enter your password when prompted
-4. File(s) will be permanently deleted (bypassing Recycle Bin)
+1. **Always-On Keyboard Protection**: Delete keys require password even during grace periods
+2. **Dialog Interception**: Freezes Windows delete dialogs until password is verified
+3. **Multi-Method Coverage**: Protects against all common deletion methods
+4. **Configurable Exclusions**: Maintain protection while allowing trusted apps to work normally
 
-#### **Changing Your Password**
-1. Press `Alt+S` or right-click tray icon → Settings
-2. Enter your current password
-3. Enter and confirm your new password
-4. Click "Save"
+## 🛠️ Technical Details
 
-#### **Adjusting Grace Periods**
-1. Open Settings (`Alt+S`)
-2. Select desired **Keyboard Grace Period** (10-25 seconds)
-   - Recommended: 20-25 seconds for comfortable batch operations
-3. Select desired **Context Menu Grace Period** (2-7 seconds)
-   - **⚡ Recommended: 2-3 seconds for maximum security**
-   - This provides just enough time to confirm/cancel the delete dialog while maintaining real-time protection
-4. Click "Save"
+- **Language**: AutoHotkey v1.1
+- **Config File**: `DeleteProtector.ini` (auto-created in script directory)
+- **System Tray Integration**: Minimal, non-intrusive operation
+- **Dialog Detection**: 50ms polling rate for responsive protection
+- **Memory**: Lightweight, minimal system resource usage
 
-#### **Pausing Protection Temporarily**
-1. Press `Alt+P` OR right-click tray icon → "Pause/Resume Protection"
-2. Protection is now disabled (tray icon changes)
-3. Delete files normally without password prompts
-4. Press `Alt+P` again to resume protection
+## 💡 Usage Tips
+
+1. **First-time setup**: Change default password immediately via Alt+S
+2. **Optimal grace periods**: Start with 3 seconds, reduce to 2 if comfortable
+3. **Exclusion list**: Only add applications you completely trust
+4. **Bulk operations**: Use Alt+P to pause protection temporarily
+5. **Testing**: Always test exclusion list with non-critical files first
+
+## 📝 Configuration File Example
+
+```ini
+[Settings]
+Password=YourSecurePassword
+KeyboardGracePeriod=3
+ContextMenuGracePeriod=3
+ExclusionList=Stack|Opus|DOpus
 
 ---
 
