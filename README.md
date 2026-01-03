@@ -213,7 +213,7 @@ For optimal security and usability:
 | Setting | Recommended Value | Reason |
 |---------|------------------|---------|
 | **Context Menu Grace Period** | **2-3 seconds** ⭐ | Provides real-time protection while giving enough time to interact with the delete dialog |
-| **Keyboard Grace Period** | 20-25 seconds | Comfortable for batch deletions via keyboard |
+| **Keyboard Grace Period** | 2-3 seconds | Provides real-time protection |
 | **Password** | Strong custom password | Change from default `admin123` immediately |
 | **Startup** | Enabled | Ensures continuous protection |
 
