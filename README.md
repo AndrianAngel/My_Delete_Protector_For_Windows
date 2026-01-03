@@ -1,6 +1,6 @@
 # 🛡️ Delete Protector - Advanced File Deletion Security
 
-![Version](https://img.shields.io/badge/version-5.1-blue.svg)
+![Version](https://img.shields.io/badge/version-5.5-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1-red.svg)
@@ -192,8 +192,9 @@ Once the tray icon is hidden:
 ```
 DeleteProtector/
 │
-├── My_Delete_Protector_5.1_Stable_Release.ahk    # Main script file
-└── DeleteProtector.ini                            # Configuration file (auto-generated)
+├── Delete_Protector_Definitive_Edition.ahk    # Main script file
+└── DeleteProtector.ini
+
 ```
 
 ### **Configuration File Contents**
@@ -289,12 +290,12 @@ If you find Delete Protector useful, please give it a star on GitHub! ⭐
 
 ## 📝 Version History
 
-**v5.1 Stable Release** (02/01/2026)
-- Stable release with full feature set
-- Dual grace period system (keyboard + context menu)
-- Dark theme UI
-- Multi-language support
-- Enhanced security and performance
+**v5.5 Definitive Edition** (03/01/2026)
+* Fixed critical keyboard protection grace period bug
+* Unified grace period ranges (2-7 seconds for both keyboard and context menu)
+* Enhanced dark theme consistency
+* Improved security: keyboard shortcuts now always require password during grace period
+
 
 ---
 
