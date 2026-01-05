@@ -356,3 +356,51 @@ Watch Delete Protector in action:
 - Recycle Bin operations
 - Settings configuration
 - And more!
+
+---
+
+# 📌 Delete Protector Ultimate Edition V2026
+
+---
+
+## 🌿 New Security Features 🌿
+
+---
+
+### ⭐🌸 DPAPI Password Encryption 🌸⭐
+
+Your password is now encrypted using Windows Data Protection API (DPAPI), making it significantly more secure than plain text storage. The encrypted password is stored in the configuration file and can only be decrypted by your Windows user account.
+
+---
+
+### 🎯 Enhanced Password Protection
+
+---
+
+🔑🔒 Password authentication is now required for:
+
+- Exiting the application (both via tray menu and Alt+X shortcut)
+- Accessing settings (Alt+S shortcut or tray menu)
+- Pausing/resuming protection (Alt+P shortcut or tray menu)
+
+👉 This prevents unauthorized users from disabling or modifying the protection settings 👈.
+
+---
+
+### 📜 SafeList Applications
+
+You can now whitelist specific applications (e.g. notepad++.exe, Code.exe, notepad.exe) that will completely bypass all password protections. When these applications are active, you can delete files freely without any password prompts.
+
+---
+
+### 👀 SafeList vs Dialog Exclusion
+
+📌 SafeList Apps: Bypasses all protection (keyboard shortcuts and dialog detection) for trusted applications where accidental deletions are less likely.
+
+📣 Dialog Exclusion: Only excludes specific dialog windows by keywords (e.g. Stack, Opus, DOpus) while keeping keyboard protection active.
+
+---
+
+⚠️ This dual-layer approach gives you precise control: use SafeList for development tools and text editors where you frequently manage files, and use Dialog Exclusion for specific file manager dialogs you want to skip.
+
+---
