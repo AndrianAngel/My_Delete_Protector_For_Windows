@@ -405,7 +405,7 @@ You can now whitelist specific applications (e.g. notepad++.exe, Code.exe, notep
 
 ---
 
-🎁 🌱 Ultimate Edition V2026 Setting 🎁
+🎁 🌱 Ultimate Edition V2026 Setting 🌱 🎁
 
 
 
