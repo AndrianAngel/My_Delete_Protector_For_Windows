@@ -5,6 +5,254 @@
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
 ![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v1.1-red.svg)
 
+---
+
+## ⚠️ Important: Understanding Delete Protector
+
+---
+
+### 🎯 What This Tool Does (And Doesn't Do)
+
+**Delete Protector is designed to prevent ACCIDENTAL file deletions, NOT to provide security protection.**
+
+---
+
+### How It Works:
+
+- Intercepts **Delete** and **Shift+Delete** keyboard shortcuts
+- Detects **right-click context menu delete** operations
+- Requires password authentication before allowing deletion
+
+---
+
+### What It Does NOT Protect Against:
+
+- Command-line deletions (CMD, PowerShell, batch scripts)
+- File deletions by other programs/applications
+- Deletions made by users with administrator privileges via other methods
+- Direct file manipulation through code or scripts
+- Malware or ransomware attacks
+
+---
+
+**🔒 This tool protects HOTKEYS and DIALOGS, not the files themselves.**
+
+Anyone with sufficient knowledge can bypass this protection by:
+
+- Ending the process via Task Manager
+- Using command-line tools (del, rm, etc.)
+- Using file management tools that don't trigger standard Windows delete dialogs
+- Deleting files programmatically
+
+---
+
+**💡 Think of this as a "speed bump" that makes you think twice before deleting, not a security vault.**
+
+---
+
+## 📦 Two Editions: Choose Your Protection Level
+
+---
+
+### 🟢 Definitive Edition - User-Friendly Protection
+
+**Best for:** Personal computers, solo users, home environments
+
+---
+
+#### Features:
+
+- Password protection for delete operations (Delete/Shift+Delete/Context Menu)
+- **Plain text password storage** - easily recoverable by opening `DeleteProtector.ini`
+- **No password required** to exit, pause, or access settings
+- Dialog Window Exclusion List (exclude specific file manager dialogs by keyword)
+- Separate grace periods for keyboard and context menu operations
+- Simple and lightweight
+
+---
+
+#### Security Level: 🔓 Low
+
+- Password is stored in plain text in the config file
+- Anyone can open settings, pause protection, or exit without authentication
+- Easy to recover if you forget your password (just check the .ini file)
+
+---
+
+#### Privacy Tip:
+
+If you want to hide the password from casual observers:
+
+- Enable stealth mode (hide tray icon) - instructions in README
+- Rename the script to something innocuous
+- Use third-party tools to hide the tray icon
+
+---
+
+#### ⚠️ Dialog Exclusion Limitation:
+
+The Dialog Window Exclusion List (e.g., `Stack|Opus|DOpus`) only excludes delete confirmation dialogs for those applications. However, **keyboard shortcuts (Delete/Shift+Delete) will still work without password in those apps** because the exclusion is checked when the dialog appears. This means someone could:
+
+1. Open an excluded application (like Directory Opus)
+2. Use Delete/Shift+Delete keys to bypass password protection entirely
+
+If you need protection in all scenarios, consider using the Ultimate Edition.
+
+---
+
+### 🔴 Ultimate Edition V2026 - Maximum Protection
+
+**Best for:** Shared computers, family PCs, workplace machines, multi-user environments
+
+---
+
+#### Features:
+
+- Password protection for delete operations (Delete/Shift+Delete/Context Menu)
+- **DPAPI encrypted password** - Windows Data Protection API (can only be decrypted by your Windows user account)
+- **Password required** to exit, pause, or access settings (prevents tampering)
+- **SafeList Applications** - whitelist trusted apps (e.g., VS Code, Notepad++) that completely bypass ALL protections
+- Dialog Window Exclusion List (exclude specific dialogs while keeping keyboard protection active)
+- Separate grace periods for keyboard and context menu operations
+- Enhanced security for shared environments
+
+---
+
+#### Security Level: 🔒 Medium-High
+
+- Password is encrypted and bound to your Windows user account
+- Cannot easily view password by opening config file
+- Others cannot disable protection without your password
+- Prevents casual tampering by family members, coworkers, or guests
+
+---
+
+#### ⚠️ Recovery Limitation:
+
+If you forget your password, you'll need to:
+
+1. End the process via Task Manager
+2. Delete `DeleteProtector.ini` to reset to default password (`admin123`)
+3. Or manually edit the registry/config (advanced users)
+
+---
+
+#### 🎯 SafeList vs Dialog Exclusion:
+
+**SafeList Applications:**
+- Completely bypasses ALL protections for specific apps
+- Keyboard protection: ❌ Disabled (Delete/Shift+Delete work freely)
+- Context menu protection: ❌ Disabled (right-click delete works freely)
+- Use case: Development tools where you frequently manage files (VS Code, Notepad++, IDEs)
+- Example: `notepad++.exe|Code.exe|devenv.exe`
+
+**Dialog Window Exclusion:**
+- Only skips password for specific delete dialogs
+- Keyboard protection: ✅ Still active (password required)
+- Context menu protection: ❌ Disabled (dialog is excluded)
+- Use case: File managers with their own confirmation (Directory Opus, Total Commander)
+- Example: `Stack|Opus|DOpus`
+
+---
+
+#### 💡 Recommendation:
+
+- Use **SafeList** for apps you completely trust and use heavily
+- Use **Dialog Exclusion** for file managers that have their own delete confirmations
+
+---
+
+## 🆚 Quick Comparison
+
+---
+
+**Delete operation protection:**
+- Definitive Edition: ✅ Yes
+- Ultimate Edition V2026: ✅ Yes
+
+**Password storage:**
+- Definitive Edition: Plain text (.ini file)
+- Ultimate Edition V2026: DPAPI encrypted
+
+**Settings access:**
+- Definitive Edition: 🔓 No password needed
+- Ultimate Edition V2026: 🔒 Password required
+
+**Exit protection:**
+- Definitive Edition: 🔓 No password needed
+- Ultimate Edition V2026: 🔒 Password required
+
+**Pause protection:**
+- Definitive Edition: 🔓 No password needed
+- Ultimate Edition V2026: 🔒 Password required
+
+**SafeList apps:**
+- Definitive Edition: ❌ No
+- Ultimate Edition V2026: ✅ Yes
+
+**Dialog exclusion:**
+- Definitive Edition: ✅ Yes
+- Ultimate Edition V2026: ✅ Yes
+
+**Password recovery:**
+- Definitive Edition: ✅ Easy (check .ini file)
+- Ultimate Edition V2026: ⚠️ Difficult (need to reset)
+
+**Best for:**
+- Definitive Edition: Personal use, solo users
+- Ultimate Edition V2026: Shared computers, families
+
+**Security level:**
+- Definitive Edition: 🔓 Low (convenience-focused)
+- Ultimate Edition V2026: 🔒 Medium-High (protection-focused)
+
+---
+
+## ✅ Recommended Use Cases
+
+---
+
+### Use Delete Protector when you want to:
+
+- Prevent accidentally hitting Delete/Shift+Delete during work
+- Add a "Are you sure?" moment before deleting important files
+- Protect against impulsive deletions you might regret
+- Prevent children or guests from accidentally deleting files
+- Add an extra layer of friction to the delete process
+
+---
+
+### DO NOT rely on Delete Protector for:
+
+- Protecting sensitive or confidential data (use encryption instead)
+- Preventing determined malicious actors from deleting files
+- Replacing proper backup solutions (ALWAYS back up important files!)
+- Securing files from ransomware or malware
+- Enterprise-level data protection
+
+---
+
+## 🛡️ Remember: This is NOT a Replacement for Backups!
+
+---
+
+**The Windows Recycle Bin is your first line of defense. Delete Protector is your second.**
+
+Always maintain proper backups of important files using:
+
+- Cloud storage (OneDrive, Google Drive, Dropbox)
+- External hard drives
+- Windows File History
+- Professional backup solutions
+
+Delete Protector simply makes you **think twice** before deleting. It won't protect you from everything, but it will protect you from yourself! 😊
+
+---
+
+**Choose the edition that matches your needs and trust level! 🎯**
+
+---
+
 
 # Delete Protector - Definitive Edition v5.5
 
