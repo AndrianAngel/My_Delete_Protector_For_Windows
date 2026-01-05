@@ -404,3 +404,19 @@ You can now whitelist specific applications (e.g. notepad++.exe, Code.exe, notep
 ⚠️ This dual-layer approach gives you precise control: use SafeList for development tools and text editors where you frequently manage files, and use Dialog Exclusion for specific file manager dialogs you want to skip.
 
 ---
+
+🎁 🌱 Ultimate Edition V2026 Setting 🎁
+
+
+
+![A1 Settings](Images/A1.png)
+
+---
+
+🔒🔑 DPAPI Password Encryption Overview 🔑🔒
+
+
+
+![A2 Settings](Images/A2.png)
+
+---
